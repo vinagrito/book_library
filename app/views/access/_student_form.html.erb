@@ -1,0 +1,17 @@
+<%@page_title = 'Студент'%>
+<table>	
+	<ul>		
+		<%=link_to 'поиск',{:controller => 'books'}%>
+	</ul>
+	<ul>
+		<%=link_to 'Список предметов',{:controller => 'subjects',:role_id => session[:role_id]}%>
+	</ul>
+	<%if !session[:user_id].blank?%>
+	<ul>
+		<%=link_to 'Просмотр взятых книг',{:controller => 'book_loans',:action => 'show',:user_id => session[:user_id]}%>
+	</ul>	
+	<ul>
+		<%=link_to 'Изменить пароль',{:controller => 'students',:action => 'password_edit', :user_id => session[:user_id]}%>
+	</ul>	
+	<%end%>
+</table>

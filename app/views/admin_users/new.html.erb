@@ -1,0 +1,26 @@
+<%@page_title = "Новый администратор"%>
+
+<%= link_to '<<Назад в список администраторов',{:action => 'list',:role_id => @role.id}%>
+
+<div class='user new'>
+	<h2>Добавление администратора</h2>	
+	
+	<% form_for(:user,:url => {:action => 'create',:role_id => @role.id}) do |b|%>
+	    
+		<%=render(:partial => 'form',:locals => {:b => b})%>
+	 
+	<div>&nbsp;</div>
+	
+	<div id='new_button' class='form-buttons'>
+		<table>
+			<tr>					
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>	
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>								
+				<td><%= submit_tag 'Добавить администратора'%></td		
+			</tr>			
+		</table>
+	</div>
+	<%end%>
+</div>

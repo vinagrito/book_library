@@ -1,0 +1,76 @@
+<%@page_title = "Управление статистикой"%>
+<%=form_for(:stat, :url =>{:action => 'new'}) do |s|%>	
+<table>	
+		<tr>
+			<td>
+				<%= s.hidden_field :run_at, :value => Time.now%>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<%= s.collection_select(:faculty_id, @faculties, :id, :name,
+				{:prompt => 'Выберите факультет'},
+				{:onchange => "#{remote_function(:url => {:action => "update_departments"},
+				:with => "'id='+value")}"})%>			
+			</td>	
+		</tr>
+		<tr>
+			<td id="departments">		
+				<%= render :partial => 'shared/departments', :object => @departments%>			
+			</td>
+		</tr>
+		<tr>
+			<td  id="specialties">	
+				<%= render :partial => 'shared/specialties', :object => @specialties%>				
+			</td>
+		</tr>
+		<tr>
+			<td>	
+				<%= s.select :current_year, 1..9,:include_blank => 'Выберите курс'%>				
+			</td>
+		</tr>
+		<tr>
+			<td  id="support">	
+				<%= s.select :support, 1..10,:include_blank => 'Выберите поддержку'%>				
+			</td>
+		</tr>
+		<tr>
+			<td >	
+				<%= submit_tag 'Запустить'%>		
+			</td>
+		</tr>	
+</table>
+	
+<%end%>
+
+<%if @statistics.size > 0  %>
+<table>
+	<tr>
+		<th>Дата</th>
+		<th>Факультет</th>		
+		<th>Кафедра</th>
+		<th>Специальность</th>
+		<th>Курс</th>
+		<th>Поддержка</th>
+		<th>Действия</th>			
+	</tr>
+	<%@statistics.each do |statistic|%>
+	<tr>	
+		<td><%=statistic.run_at.to_s(:long)%></td>		
+		<td><%=statistic.specialty.department.faculty.name%></td>
+		<td><%=statistic.specialty.department.name%></td>
+		<td><%=statistic.specialty.name%></td>
+		<td><%=statistic.current_year%></td>
+		<td><%=statistic.support%></td>
+		<td>
+			<%=link_to 'Просмотр',:action => 'show',:stat_id => statistic.id%>
+			<%=link_to 'Удалить',:action => 'delete',:stat_id => statistic.id%>
+		</td>			
+	</tr>	
+	<%end%>
+</table>
+<%end%>
+
+
+
+

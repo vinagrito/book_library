@@ -1,0 +1,179 @@
+/* Public stylesheet */
+
+/* Colors
+brick-red     #822727
+red:          #993120
+green:        #94B26F
+light green:  #B6D491
+yellow:       #F2DC87
+dark brown:   #332318
+light brown:  #4C2516
+*/
+
+html { height: 100%; width: 75%; }
+body { 
+	width: 100%; 
+	height: 70%;
+	min-width:750px;
+	min-height:500px; 
+	margin: 10px;
+	margin-left:150px; 
+	padding: 0; 
+  	font: 11px Verdana,Lucida,Arial,Helvetica,sans-serif; 
+  	color: #332318;}
+  	
+p, td, ul, ol, li, dl, dt, dd { 
+  font-family: Verdana,Lucida,Arial,Helvetica,sans-serif; }
+  
+img { 
+	text-align:left;
+	border: none; }
+	
+/*table {border-collapse: collapse;  }*/
+table tr th, table tr td { vertical-align: top; text-align: left; 
+  padding: 3px; }
+  
+a,a:visited  { color: #993120; }
+a:hover {  color: #B6D491;}
+
+.clear { clear: both; }
+.center { text-align: center; }
+
+.odd { background: #FFFFFF}
+.even { background: #000000}
+
+/* Structure */
+#main_header { 
+	background: url(/images/login/Untitled-5.png)no-repeat;
+	background-size: 100%;
+	
+	height: 150px;
+	text-align: center; 
+	}
+
+#logo {float:left;}
+
+#header { 
+	height: 74px;
+	margin-left:110px;
+	padding-top:10px; 
+	/*background: #007A29;*/
+	background: url(/images/login/Untitled-5.png)no-repeat;
+	background-size: 100%;
+	color:#F2DC87;
+	border-left:10px solid #FFFFFF;
+	
+}
+	
+#notice_area { 
+	margin-top:5px; 
+	width:80%; 
+	color: #DC143C;
+	padding: 0.5em 1em;
+	font: 18px Verdana,Lucida,Arial,Helvetica,sans-serif;}
+	
+#user_opt {
+	font: 10px; 
+	text-align:right;
+	background: #FFFFFF; 
+	width:100%;
+	margin-top:5px;
+	border:10px;
+	position:relative}
+	
+#head_name {
+	font: 10px; 
+	text-align:left;	
+	position:absolute;}
+	
+#logout {
+	font: 10px; 
+	text-align:right;
+	float:right;}
+
+#main { 
+	width:100%; 
+	height:100%; 
+	background: #FFFFFF;
+	margin-top:20px;
+	position:relative;
+	margin-right:10px;}
+	
+#navigation { 
+	width:15%; 
+	height:100%; 
+	background:#FFFFFF;
+	position:absolute;}
+	
+#content {
+	width:79%;
+	height:100%; 
+	background:#FFFFFF;
+	position:relative;
+	float:right;}
+	
+#blank { background: #FFFFFF;}
+
+#paginator {
+	background: #FFFFFF;
+	position:absolute;
+	bottom:0px;}
+	
+#paginator a, a:visited { color:  #822727; }
+#footer { 
+	background: url(/images/login/Untitled-6.png)no-repeat center;
+	background-size: 100%;
+	clear: both; 
+	height: 3.5em; 
+	text-align: right; 
+	
+	color: #F2DC87; 
+	border-right:10px; }
+	
+#footer p {
+	 margin: 0; 
+	 padding: 0.5em 1em; 
+	 font-weight:bold; }
+
+/* Navigation */
+#navigation table td {
+	vertical-align:middle;
+	font:11px Monospace}
+
+/* Content */
+#content table { 
+	color:#000000; 
+	border:2px;
+	text-align:left;
+	font: 11px Verdana,Lucida,Arial,Helvetica,sans-serif;}
+
+#table_all th {
+	border:3px double #007A29; 
+	text-align:center;
+	vertical-align:middle}
+	
+#table_all td {
+	text-align:left;
+	font: 10px Verdana,Lucida,Arial,Helvetica,sans-serif;
+	vertical-align:middle}
+
+#table_show  th {
+	
+	text-align:left;
+	font: 10px}
+	
+#content h3 { color: #332318; }
+
+/*#stud_form th{margin-top:5px;text-align:left;height:8px;font: 12px Verdana,Lucida,Arial,Helvetica,sans-serif;}
+/* Student From*/
+
+#stud_form table th {text-align:left;}
+
+#save_button {margin-left:200px;margin-top:10px;}
+
+
+
+
+
+
+

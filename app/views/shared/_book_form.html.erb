@@ -1,0 +1,39 @@
+
+<table>
+	<tr>
+		<th>Название</th>
+		<%if !@spec%>			
+		<th>Автор</th>
+		<%else%>
+		<th>Предмет</th>
+		<%end%>			
+		<th>Издательство</th>
+		<th>Страна издательства</th>
+		<th>Код</th>
+		<%if admin?%>		
+		<th>Действия</th>
+		<%end%>
+	</tr>
+		<% @books.each do |book|%>			
+	<tr>
+		<td><%=link_to "#{book.name}",:action => 'show',:id => book.id%></td>
+		<%if !@spec%>
+		<td><%=link_to "#{book.author.surname} #{book.author.name}",:controller => 'authors',:action => 'show', :author_id => book.author_id%></td>					<%else%>
+		<td><%=link_to "#{book.subject.name}",:controller => 'books',:action => 'list',:subject_id => book.subject_id%></td>
+		<%end%>
+		<td><%=link_to "#{book.editorial}",:action => 'list', :editorial => book.editorial%></td>
+		<td><%=link_to "#{book.editorial_country}",:action => 'list', :editorial_country => book.editorial_country%></td>
+		<td><%=book.code%></td>
+		<%if admin?%>
+		<td>		
+			<%=link_to image_tag('books/edit16.png',:alt => 'Редактировать студента'),:controller => 'books',:action => 'edit',:book_id => book.id, :subject_id => book.subject_id%>
+			&nbsp;
+			<%=link_to image_tag('books/delete16.png',:alt => 'Удалить студента'),:action => 'delete',:id => book.id, :subject_id => book.subject_id%>
+		</td>
+		<%end%>
+	</tr>
+		<%end%>
+</table>
+
+	
+	

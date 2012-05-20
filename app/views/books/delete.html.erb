@@ -1,0 +1,23 @@
+<%@page_title = "Удаление книги"%>
+<%= link_to '<<Назад в список книг',{:action => 'list',:subject_id => @book.subject_id}%>
+
+
+<div class='book delete'>
+	<h2>Удаление книги</h2>
+	
+	<% form_for(:book,:url => {:action => 'destroy',:id => @book.id,:subject_id => @book.subject_id}) do |b|%>
+	  <p>Вы уверены,что хотите удалить книгу: "<%=@book.name%>" ?</p>
+		
+	 	
+	<div>&nbsp;</div>
+	
+	<div id='delete_button' class='form-buttons'>
+		<table>
+			<tr>	
+				<td><%= submit_tag('Удалить книгу')%></td>
+			</tr>
+		</table>			
+	</div>
+	<%end%>
+</div>
+

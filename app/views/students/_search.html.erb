@@ -1,0 +1,11 @@
+<%form_for(:user, :url => {:action => 'list'}) do |u|%>
+	<table>
+		<tr>
+			<td>&nbsp;</td>
+			<td><%= u.text_field :surname%></td>
+			<td><%= submit_tag 'Поиск по Фамилии студента'%></td>			
+		</tr>
+		
+	</table>
+<%end%>
+

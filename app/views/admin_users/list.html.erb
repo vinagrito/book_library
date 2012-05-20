@@ -1,0 +1,37 @@
+<%@page_title = "Список администраторов"%>
+<% if !flash[:notice].blank?%>
+	<div>
+		<%=flash[:notice]%>
+	</div>
+<%end%>
+
+<div>
+	<h2>Администратор</h2>
+</div>
+
+<% @users ||=[] %>
+<div><%= pluralize(@users.size,'administrator')%> found</div>
+<%= image_tag('users/add.png',:title => 'Добавить')%><%= link_to 'Добавить администратора',:action => 'new',:role_id => 1,:chosen => @params_chosen%>
+<table>
+	<tr>		
+		<th>Ф.И.О</th>
+		<th>Электронная почта</th>		
+		<th>Действия</th>
+	</tr>
+		<% @users.each do |user|%>			
+	<tr>		
+		<td><%=user.surname + " " + user.name%></td>	
+		
+		<td><%=user.email%></td>		
+		<td>			
+			<%=link_to image_tag('users/edit.png',:title => 'Редактировать'),{:action => 'edit',:id => user.id,:role_id => user.role_id}%>
+			<%=link_to image_tag('users/delete.png',:title => 'Удалить'),{:action => 'delete',:id => user.id,:role_id => user.role_id}%>
+			
+		</td>
+	</tr>
+		<%end%>
+</table>
+
+<% content_for :paginator do %>
+	  	<%= will_paginate @users %>  
+<% end %>

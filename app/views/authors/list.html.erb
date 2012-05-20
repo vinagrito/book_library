@@ -1,0 +1,36 @@
+<%@page_title = "Author show"%>
+
+<p><%#= link_to '<<Назад в меню управления библиотекой',{:controller => 'subjects',:role_id => session[:role_id]} unless !admin?%></p>
+<p><%#= link_to '<<Назад в список студентов',{:controller => 'students',:role_id => 3} unless !admin?%></p>
+<%#= link_to '<<Назад в главное меню',{:controller => 'access',:action => 'menu',:role_id => 3} unless !student?%>
+
+
+<h3>Книги автора: 
+	<%=  @books[0].author.surname + " "+ @books[0].author.name%>	
+</h3>  
+
+
+<%if @books.size > 0%>
+
+<div><%= pluralize(@books.size,'book')%> found</div>
+<table>
+	<tr>
+		<th>Название</th>			
+		<th>Предмет</th>		
+		<th>Издательство</th>
+		<th>Страна издательства</th>
+		<th>Код</th>		
+	</tr>
+		<% @books.each do |book|%>				
+			<tr>
+				<td><%=book.name%></td>
+				<td><%=book.subject %></td>			
+				<td><%=link_to "#{loan.reader.surname} #{loan.reader.name}",:controller => 'students',:id => loan.reader.id%></td>				
+				<td><%=loan.book_away.to_s(:long)%></td>				
+				<td><%=loan.book_back.to_s(:long)%></td>
+				<td><%=(loan.book_away + 6.months).to_s(:long)%></td>				
+			</tr>
+			
+		<%end%>
+</table>
+<%end%>

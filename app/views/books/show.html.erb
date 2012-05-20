@@ -1,0 +1,18 @@
+<%@page_title = "Book Show"%>
+<%= link_to '<<Назад в список книг',:action => 'list',:subject_id => @book.subject_id%>
+<h2><%="#{@book.name} - #{@book.author.surname} #{@book.author.name}"%></h2>
+
+<table>		
+	<tr>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td><%=@book.content_index%></td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td><%= submit_tag("Reserve")%></td>
+	</tr>	
+</table>

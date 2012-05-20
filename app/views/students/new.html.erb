@@ -1,0 +1,27 @@
+<%@page_title = "Добавление студента"%>
+
+<% javascript_include_tag :defaults %>
+
+
+
+<% form_for(:user,:url => {:action => 'create'}) do |u|%>
+	
+	<%= render :partial => 'stud_form',:locals => {:u => u}%>
+	
+	<div id="save_button">	
+		<td><%= submit_tag 'Добавить студент'%></td>
+	</div>
+<%end%>
+
+
+
+
+
+
+
+
+
+
+
+
+	

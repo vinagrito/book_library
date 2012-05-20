@@ -1,0 +1,70 @@
+<%@page_title = "Список студентов"%>
+
+<%=render :partial => 'search',:role_id => 3%>
+
+<h5><%=image_tag('users/add.png',:alt => 'Добавить студента')%><%= link_to 'Добавить студента',:action => 'new',:role_id => 3,:chosen => @params_chosen%></h5>
+<hr/>
+<table id='table_all'>
+	<tr>		
+		<th>Ф.И.О</th>				
+		<th>Факультет</th>
+		<th>Кафедра</th>			
+		<th>Группа</th>
+		<th>Курс</th>				
+		<th>Форма обучения</th>
+		<th>Долги</th>		
+		<th>Действия</th>
+	</tr>
+		<% @users.each do |user|%>			
+	<tr>		
+		<td id='name'><%=user.surname + " " + user.name %></td>		
+					
+		<td><%=link_to "#{user.specialty_group.specialty.department.faculty.name}",:action => 'list',:faculty_id => user.specialty_group.specialty.department.faculty_id%></td>
+		<td><%=link_to "#{user.specialty_group.specialty.department.name}",:action => 'list',:department_id => user.specialty_group.specialty.department_id%></td>
+		
+		<td><%=link_to "#{user.specialty_group.group}",:action => 'list',:specialty_group_id => user.specialty_group.id%></td>				
+		<td><%=link_to "#{user.current_year}",:action => 'list',:current_year => user.current_year%></td>		
+		
+		<%if user.day_time == true%>
+		<%@time_value = 1%>
+		<%@time = 'Дневная'%>				
+		<%else%>
+		<%@time = 'Заочная'%>
+		<%@time_value = 0%>			
+		<%end%>
+		<td><%=link_to @time,:action => 'list',:day_time => @time_value%></td>
+		<td><%=link_to "#{user.books.size}",:controller => 'book_loans',:action => 'show', :user_id => user.id%></td>
+		
+		<td>
+			<%if params.keys[0]!= "page"%>
+				<%par_key = params.keys[0]%>
+				<%par_value = params.values[0]%>
+			<%else%>
+				<%par_key = params.keys[1]%>
+				<%par_value = params.values[1]%>
+			<%end%>
+			
+			<%=link_to image_tag('users/info.png',:title => 'Посмотреть'),:action => 'show', :user_id => user.id,:sort_param_key => par_key,:sort_param_value =>par_value%>
+			<%=link_to image_tag('users/edit.png',:title => 'Редактировать'),:action => 'edit', :user_id => user.id,:sort_param_key => par_key,:sort_param_value => par_value%>
+			<%=link_to image_tag('users/delete.png',:title => 'Удалить'),:action => 'destroy', :user_id => user.id%>
+			
+		</td>		
+	</tr>
+		<%end%>
+</table>
+
+<% content_for :paginator do %>
+	<%if @sorted%>
+		<td><%=link_to "Показать все",:controller => 'students',:role_id => 3%></td>
+	<%end%>  
+  	<%= will_paginate @users %>  
+<% end %>
+
+
+
+
+
+
+
+
+

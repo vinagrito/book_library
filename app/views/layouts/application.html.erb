@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+	<head>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8">		
+		<title>Библиотека <%= "| #{@page_title}" if @page_title%></title>
+		  <%= javascript_include_tag :all %>
+  			<%= csrf_meta_tag %>
+		<meta name="author" content="Daniel Garcia">
+		<%= stylesheet_link_tag('public')%>
+	</head>
+	<body>
+	
+		
+		<div id="main_header">
+		
+			
+		</div>
+			
+			
+			<div id="user_opt">
+		         <%if session[:user_id] != nil%>		       
+		         <div id="logout"><%=link_to 'Выход',:controller => 'access',:action => 'logout'%></div>
+		         <div id="head_name"><%=label_tag :user,"#{session[:name]} #{session[:surname]}"%></div>
+		         <%end%>
+		         
+		    </div>	
+		         
+		
+		
+		<div id="main">	
+			<div id="navigation">
+				
+				<%= render :partial => 'shared/menu'%>
+				
+				
+					
+			</div>
+			
+			<div id="content">
+			<%if !flash[:notice].blank?%>	
+           		<div id = "notice_area">
+	         		<%=flash[:notice]%>	         		
+           		</div>
+           	<%end%>				 	
+			    <%=yield%>	
+			   
+			    <div id="paginator">
+					<%=yield :paginator%>
+				</div>	
+			</div>			
+			
+		</div>	
+		<div id="footer">
+			<div id="blank">&nbsp;</div>
+			<p id="copyright">&copy; БНТУ.Общежитие 13 /Даниэль Э. Гарсия Шульман</p>
+		</div>	
+	</body>
+</html>
+
+
+
+
+
+
+

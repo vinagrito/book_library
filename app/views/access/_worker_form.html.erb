@@ -1,0 +1,17 @@
+<%@page_title = 'Рабочий'%>
+<table>	
+	
+	<ul>
+		<li><%=link_to 'Список предметов',{:controller => 'subjects'}%></li>
+	</ul>
+	<ul>
+		<li><%=link_to 'Выдачи книг',{:controller => 'book_loans',:action => 'new'}%></li>
+	</ul>	
+	<ul>
+		<li><%=link_to 'Изменить пароль',{:controller => 'workers',:action => 'password_edit', :user_id => session[:user_id]}%></li>
+	</ul>
+	
+	<ul>
+		<td>&nbsp;</td>
+	</ul>	
+</table>

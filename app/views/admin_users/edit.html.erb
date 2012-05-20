@@ -1,0 +1,25 @@
+<%@page_title = "Изменить администратор"%>
+
+<%= link_to '<<Назад в список администраторов',{:action => 'list',:role_id => @role.id}%>
+
+<div class='user new'>
+	
+	
+	<% form_for(:user,:url => {:action => 'update', :role_id => @role.id}) do |b|%>
+	    <h2>Изменение данных администратора <%=@user.name + " " + @user.surname%></h2>	
+		  <%=render(:partial => 'form',:locals => {:b => b})%>    
+		
+
+	<div id='update_button' class='form-buttons'>
+		<table>
+			<tr>					
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>	
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>								
+				<td><%= submit_tag 'Сохранить изменения'%></td		
+			</tr>			
+		</table>
+	</div>
+	<%end%>
+</div>

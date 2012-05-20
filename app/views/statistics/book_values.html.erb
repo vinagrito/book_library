@@ -1,0 +1,17 @@
+
+<%=link_to '<<Назад в результаты',:action => 'show',:stat_id => params[:stat_id]%>
+<table>
+	<tr>
+		<th>Навание</th>
+		<th>Автор</th>
+	</tr>
+	<%1.upto(@stat.combination.size - 2) do |position|%>
+		<% @book_id = @stat.combination[position].to_i%>
+		<%if @book_id != 0%>
+		<tr>
+		   <td><%=Book.find(@book_id).name %></td>
+		 	<td><%=Book.find(@book_id).author.name + " " + Book.find(@book_id).author.surname %></td>	
+		</tr> 
+		<%end%>
+	<%end%>
+</table>

@@ -1,0 +1,14 @@
+<%@page_title = "User delete = #{@user.name}"%>
+
+<%=link_to "<<Назад в список администраторов",:action => 'list',:role_id => @role.id%>
+
+<div class="user delete">
+	<h2>Удаление администратора</h2>
+	<%form_for(:user, :url=> {:action => 'destroy',:id => @user.id,:role_id => @role.id}) do%>
+	
+	<p class = "reference-name"><%=@user.surname + " " + @user.name%>
+	<div>
+		<%=submit_tag "Удалить администратора"%>
+	</div>
+	<%end%>
+</div>

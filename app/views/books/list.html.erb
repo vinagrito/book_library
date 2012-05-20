@@ -1,0 +1,25 @@
+<%@page_title = "Список книг"%>
+
+<%= link_to '<<Назад в меню предметов',{:controller => 'subjects',:action => 'list'}%>
+
+<p/>
+<% @b_sub_id = params[:subject_id] unless params[:subject_id].blank? %>
+
+<% if !@b_sub_id.blank?%>	
+ 	<h3>Книги на тему: <%=Subject.find(params[:subject_id]).name%></h3> 
+	<h5><%=image_tag('books/add16.png',:alt => 'Добавить книгу') unless !admin?%><%= link_to 'Добавить книгу',{:controller => 'books',:action => 'new',:subject_id => @b_sub_id} unless !admin?%></h5>	
+		
+	<%end %>
+		
+	<% if @books.size > 0%>
+		
+		<%=render :partial => 'shared/book_form',:books => @books%>
+	
+
+	<% content_for :paginator do %>
+			
+	  	<%= will_paginate @books %>  
+	  	
+	<% end %>
+	
+<%end %>

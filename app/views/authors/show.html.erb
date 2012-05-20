@@ -1,0 +1,13 @@
+<%@page_title = "Книги автора #{@books[0].author.surname + " " + @books[0].author.name}"%>
+
+<h3>Книги автора: 
+	<%= @books[0].author.name + " " + @books[0].author.surname%>	
+</h3>  
+
+<div><%= pluralize(@books.size,'book')%> found</div>
+<%@spec = true%> <%#Tells me that I know the authors name%>
+<%= link_to 'Добавить книгу',{:controller => 'books',:action => 'new',:author_id => @books[0].author_id,} unless !admin?%>
+
+<%=render :partial => 'shared/book_form',:books => @books, :spec => @spec%>
+
+

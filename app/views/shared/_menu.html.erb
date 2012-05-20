@@ -1,0 +1,15 @@
+
+	<% if admin? %>		
+			
+			<%= render(:partial =>'access/admin_form')%>		
+	
+	<%elsif worker?%>	
+		
+			<%= render(:partial =>'access/worker_form')%>
+			
+	<%else%>
+	 
+			<%= render(:partial =>'access/student_form')%>		
+		
+	<%end%>
+

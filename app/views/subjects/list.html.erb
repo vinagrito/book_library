@@ -1,0 +1,37 @@
+<%@page_title = "Список предметов"%>
+
+
+<div><%#=link_to '<<Назад в главное меню',{:controller => 'access', :action => 'menu',:role_id => session[:role_id]}%></div>
+<% if admin? %>
+<div>&nbsp;</div>
+<ul>
+	<%#=link_to 'просмотр выданных книг',{:controller => 'book_loans'}%>
+	<li><%=link_to 'Добавить новый предмет',{:action => 'new'}%></li>
+</ul>
+
+<%end%>
+<%count = 0%>
+<%=render :partial => 'search'%>
+	<hr/ color='#007A29'>
+<table>
+	<tr>
+		<td>&nbsp;</td>
+	</tr>
+	<% @subjects.each do |subject|%>				
+		<td><%= link_to subject.name,{:controller => 'books', :action =>'list',:subject_id => subject.id}%></td>
+		<td>&nbsp;</td>
+		<%if count == 9%>
+			<tr>						
+			<%count =0 %>	
+			</tr> 		
+		<%else%>			
+			<%count += 1%>								
+		<%end%>	
+	<%end%>	
+</table>
+
+
+
+
+
+	

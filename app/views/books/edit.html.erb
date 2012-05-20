@@ -1,0 +1,28 @@
+<%@page_title = "Редактирование книги"%>
+
+<%= link_to '<<Назад в список книг',{:action => 'list',:subject_id => @book.subject_id}%>
+
+<div class='book edit'>
+	<h2>Редактирование книги</h2>
+	
+	<% form_for(:book,:url => {:action => 'update',:book_id => @book.id,:subject_id => @book.subject_id,:author_id => @author.id}) do |b|%>
+	
+		<%=render(:partial => 'book_subject_form',:locals => {:b => b})%>		
+	 	
+	<div>&nbsp;</div>
+	
+	 	
+	<div id='update_button' class='form-buttons'>
+		<table>
+			<tr>
+					
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>	
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>				
+				<td><%= submit_tag('Обновить книгу')%></td>
+			</tr>
+		</table>
+	</div>
+	<%end%>
+</div>

@@ -1,0 +1,25 @@
+<%@page_title = 'Администратор'%>
+<table>	
+	<tr>				
+		<td><%=image_tag('menu/admin.png')%></td>
+		<td><%=link_to 'Управление администраторами',{:controller => 'admin_users',
+					:role_id => 1}%></td>
+	</tr>
+	<tr>
+		<td><%=image_tag('menu/worker.png')%></td>
+		<td><%=link_to 'Управление рабочими',{:controller => 'workers',:role_id => 2}%></td>
+	</tr>
+	<tr>
+		<td><%=image_tag('menu/student.jpg')%></td>
+		<td><%=link_to 'Управление студентами',{:controller => 'students',:role_id => 3}%></td>
+	</tr>	
+	<tr>
+		<td><%=image_tag('menu/library.png')%></td>
+		<td><%=link_to 'Управление библиотекой',{:controller => 'subjects'}%></td>
+	</tr>
+	<tr>
+		<td><%=image_tag('menu/chart.png')%></td>
+		<td><%=link_to 'Управление статистикой',{:controller => 'statistics'}%></td>
+	</tr>	
+	
+</table>

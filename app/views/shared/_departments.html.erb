@@ -1,0 +1,4 @@
+<%= collection_select(:user,:department_id, departments, :id, :name,
+					{:prompt => 'Выберите кафедру'},
+					{:onchange => "#{remote_function(:url => {:action => "update_specialties"},
+													:with => "'id='+value")}"})%>

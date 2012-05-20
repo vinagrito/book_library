@@ -1,0 +1,26 @@
+<% error_messages_for(@book)%>
+
+<div class='book new'>
+	<% form_for(:book,:url => {:action => 'create'}) do |b|%>
+		<%if @book.subject != nil%>
+			
+			<%= link_to "<<Назад в список книг на тему: #{@book.subject.name}",{:action => 'list',:subject_id => @book.subject_id}%>			
+			<h2><%="Новая книга предмета: #{@book.subject.name}"%></h2>
+			<div>&nbsp;</div>
+			<%=render(:partial => 'book_subject_form',:locals => {:b => b})%>
+			
+		<%else%>
+			
+			<%= link_to "<<Назад в список книг автора: #{@book.author.surname} #{@book.author.name}",{:controller => 'authors',:action => 'show',:author_id => @book.author_id}%>
+			<h2><%="Новая книга автора: #{@book.author.surname} #{@book.author.name}"%></h2>
+			<div>&nbsp;</div>
+			<%=render(:partial => 'book_author_form',:locals => {:b => b} )%>
+			
+		<%end%>
+				
+		<div id='save_button'>									
+			<%= submit_tag 'Добавить книгу'%>		
+		</div>
+		
+	<%end%>
+</div>

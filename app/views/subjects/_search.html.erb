@@ -1,0 +1,16 @@
+<%form_for(:book, :url => {:controller => 'books',:action => 'list'}) do |b|%>
+	<table>
+		<tr>
+			<td>&nbsp;</td>
+			<td><%= b.text_field :name%>
+			<%= " По "%>
+			<%= select_tag "param",
+				options_for_select({"автору" => "author",
+									"названию" => "name",
+									"предмету" => "subject"})%></td>
+			<td><%= submit_tag 'Поиск'%></td>
+			
+		</tr>
+		
+	</table>
+<%end%>

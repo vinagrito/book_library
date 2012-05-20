@@ -1,0 +1,19 @@
+<h3>Здравствуйте <%="#{@user.name} " "#{@user.surname}"%></h3>
+
+<p>Напоминаем,что для дальнейшей выдачи литературы Вам нужно
+расcчитаться с библиотекой по следующим книгам:</p>
+<table id='table_all'>
+	<tr>
+		<th>Название</th>
+		<th>Автор</th>
+		<th>День выдачи</th>
+	</tr>
+	<%@loans.each do |loan| %>
+	<tr>
+		<td><%=loan.book.name%></td>
+		<td><%=loan.book.author.name + " "+ loan.book.author.surname%></td>
+		<td><%=loan.book_away.to_s(:long)%></td>
+	</tr>
+	<%end%>
+</table> 
+

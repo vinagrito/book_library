@@ -1,0 +1,16 @@
+<%@page_title = "Редактирование данных студента"%>
+
+<%= link_to '<<Назад в список студентов',{:action => 'list',
+	:"#{params[:sort_param_key]}" => params[:sort_param_value] }%>
+
+<% form_for(:user,:url => {:action => 'update',:sort_param_key => params[:sort_param_key],:sort_param_value => params[:sort_param_value]}) do |u|%>
+		
+	<%=render(:partial => 'stud_form',:locals => {:u => u})%>		
+		
+	<div id="save_button">
+		<td><%= submit_tag 'Сохранить изменения'%></td>
+	</div>	
+<%end%>
+
+
+

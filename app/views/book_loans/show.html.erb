@@ -1,0 +1,68 @@
+<%@page_title = "Список выданных книг"%>
+
+
+<p><%#= link_to '<<Назад в меню управления библиотекой',{:controller => 'subjects',:role_id => session[:role_id]} unless !admin?%></p>
+<p><%#= link_to '<<Назад в список студентов',{:controller => 'students',:role_id => 3} unless !admin?%></p>
+<%#if worker?%>
+	<p><%#= link_to 'Новая выдача',{:controller => 'book_loans', :action => 'new'}%></p>
+<%#end%>
+<%if !student?%>
+	<% form_for(:book,:url => {:action => 'create',:user_id => @user.id}) do |u|%>
+	
+		<table>		
+			<tr>				
+				<td><%= u.text_field :code%> </td>
+				<td><%= submit_tag 'выдать'%></td>
+			</tr>					
+		</table>
+	<%end%>
+<%end%>
+
+<%#= link_to '<<Назад в главное меню',{:controller => 'access',:action => 'menu',:role_id => 3} unless !student?%>
+
+<%if @loans.size > 0%>
+	<%if !student?%>
+		<h3>Книги у студента:
+			<%if admin?%> 
+				<%= link_to "#{@loans[0].reader.surname} " "#{@loans[0].reader.name}",:controller => 'students',:action => 'list',:id => @loans[0].reader.id %>
+		    <%else%>
+		    <%= "#{@loans[0].reader.surname} #{@loans[0].reader.name}"%>
+		    <%end%>
+		    </h3>
+		<%=image_tag('users/mail.png')%><%=link_to 'Напомнить о сдаче', :action => 'delivery_reminder',:user_id => @loans[0].reader.id%>  
+	<%end%>
+	<%if student?%>
+	<h3>У вас в данный момент есть </h3> 
+	<%end%>
+	<div><%= pluralize(@loans.size,'loan')%> found</div>
+	<table>
+		<tr>
+			<th>Название</th>			
+			<th>Автор</th>			
+			<th>Дата выдачи</th>
+			<th>Дата сдачи</th>
+			<%if !student?%>					
+				<th>Действия</th>
+			<%end%>
+		</tr>
+			<% @loans.each do |loan|%>				
+				<tr>
+					<td><%=link_to "#{loan.book.name}",:controller => 'books', :action => 'show', :id => loan.book.id%></td>
+					<td><%=link_to "#{loan.book.author.surname} #{loan.book.author.name}",:controller => 'authors',:action => 'show',:author_id => loan.book.author_id %></td>			
+					<td><%=loan.book_away.to_s(:long)%></td>				
+					<%if loan.book_back != nil%>
+					<td><%=loan.book_back.to_s(:long)%></td>
+					<%end%>
+					<td><%#=(loan.book_away + 6.months).to_s(:long)%></td>
+					<%if loan.book_back.blank? && !student?%>
+					<td>
+						<%=link_to 'Сдать', :action => 'book_delivery',:id => loan.id%>	
+					</td>	
+					<%end%>				
+				</tr>
+				
+			<%end%>
+	</table>
+<%else%>
+	<h3>В данный момент у вас нет никаких книг</h3>
+<%end%>

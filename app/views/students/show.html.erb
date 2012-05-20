@@ -1,0 +1,55 @@
+<%@page_title = "Информация о студенте " + "#{@user.name}"+' '+"#{@user.surname}"%>
+
+<%= link_to '<<Назад в список студентов',{:action => 'list',
+	:"#{params.values[0]}" => params[:sort_param_value] }%>
+
+<p>
+<table id='table_show'>
+	<tr>		
+		<th>Ф.И.О</th>					
+		<td><%=@user.surname + " " + @user.name %></td>
+	</tr>
+	<tr>		
+		<th>Номер читательского билета</th>					
+		<td><%=@user.card_code%></td>
+	</tr>
+	<tr>			
+		<th>Факультет</th>
+		<td><%="#{@user.specialty_group.specialty.department.faculty.name}"%></td>
+	</tr>
+	<tr>	
+		<th>Кафедра</th>				
+		<td><%="#{@user.specialty_group.specialty.department.name}"%></td>
+	</tr>
+	<tr>	<th>Специальность</th>	
+		<td><%="#{@user.specialty_group.specialty.name}"%></td>		
+	</tr>
+	<tr>
+		<th>Группа</th>
+		<td><%="#{@user.specialty_group.group}"%></td>
+	</tr>
+	<tr>
+		<th>Курс</th>
+		<td><%="#{@user.current_year}"%></td>		
+	</tr>
+	<tr>
+		<th>Форма обучения</th>
+		<%if @user.day_time == true%>
+		<%@time_value = 1%>
+		<%@time = 'Дневная'%>				
+		<%else%>
+		<%@time = 'Заочная'%>
+		<%@time_value = 0%>			
+		<%end%>
+		<td><%= @time%></td>
+	</tr>
+	<tr>	<th>Долги</th>
+		<td><%= "#{@user.books.size}"%></td>
+	</tr>				
+	<tr>	<th>Активный</th>
+	    <td><%=  "#{@user.active}"%></td>
+	</tr>
+								
+</table>
+</p>
+

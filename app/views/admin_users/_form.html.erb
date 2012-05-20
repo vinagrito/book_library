@@ -1,0 +1,37 @@
+
+
+<table summary='user from fields'>
+	<tr>
+		<%= b.hidden_field(:role_id, :value => 1)%>		
+	</tr>
+	<tr>
+		<th><%= b.label :name,'Имя' %></th>
+		<td><%= b.text_field :name,:size => 30 %></td>
+	</tr>
+	<tr>		
+		<th><%= b.label:surname,'Фамилия'%></th>
+		<td><%= b.text_field :surname,:size => 30 %></td>
+	</tr>
+		<tr>
+		<th><%= b.label :username,'Имя пользователя'%></th>
+		<td><%= b.text_field :username,:size => 30 %></td>
+	</tr>	
+	<tr>
+		<th><%= b.label :email,'Электронная почта'%></th>
+		<td><%= b.text_field :email,:size => 30%></td>
+	</tr>
+	
+	<tr>
+		<th><%= b.label :password,'Пароль'%></th>
+		<td><%= b.password_field :password,:size => 30%></td>
+	</tr
+	<tr>
+		<th><%= b.label :password_confirmation,'Подтверждение пароля'%></th>
+		<td><%= b.password_field :password_confirmation,:size => 30%></td>
+	</tr>	
+	
+	<p><%#=link_to 'Изменить пароль',:action => 'password_update',:id => @user.id%></p>
+	
+</table>
+
+	

@@ -1,0 +1,34 @@
+<%@page_title = "Новая книга предмета #{@book.subject.name}"%>
+
+<table summary='Book from fields'>
+	<tr>
+		<th><%= b.label :name,'Название' %></th>
+		<td><%= b.text_field :name,:size => 50 %></td>
+	</tr>
+	<tr>		
+		<th><%= b.label:author_id,'Автор'%></th>
+		<td><%= b.select :author_id,@authors.collect {|a| [a.surname + " " + a.name,a.id]}%></td>
+	</tr>	
+	<tr>
+		<th><%= b.label :code,'Код'%></th>
+		<td><%= b.text_field :code,:size => 50%></td>
+	</tr>
+	<tr>
+		<th><%= b.label :index,'Содержание'%></th>
+		<td><%= b.text_field :content_index,:size => 50%></td>
+	</tr>	
+	<tr>
+		<th><%= b.label :editorial,'Издательство'%></th>
+		<td><%= b.text_field :editorial,:size => 50%></td>
+	</tr>	
+	<tr>
+		<th><%= b.label :editorial_country,'Страна издательства'%></th>
+		<td><%= b.text_field :editorial_country,:size => 50 %></td>
+	</tr>	
+	<tr>
+		<th><%= b.label :price,'Цена'%></th>
+		<td><%= b.text_field :price,:size => 50%></td>
+	</tr>
+	
+</table>
+  

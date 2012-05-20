@@ -1,0 +1,25 @@
+<h2>Результаты для студентов специальности:<%="#{@statistic.specialty.name }"%>
+	(<%="#{@statistic.specialty.department.faculty.name}" +" - "+"#{@statistic.specialty.department.name}"%> )</h2>
+
+
+<table>
+	<tr>
+		<th>Комбинация</th>
+		<th>Поддержка</th>				
+	</tr>
+	<%@apriori_results.each  do |key|%>
+	<tr>
+		<td>
+			<%=link_to "#{key.combination}",:action => 'book_values',:combination_id => key,:stat_id => @statistic.id,:page => params[:page]%>
+		
+		</td>
+		<td><%=key.support%></td>	
+	
+	</tr>
+	<%end%>
+</table>
+
+<%= will_paginate @apriori_results %>  
+
+
+

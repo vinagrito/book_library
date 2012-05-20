@@ -1,0 +1,25 @@
+<% error_messages_for(@subject)%>
+<%@page_title = "New Subject"%>
+
+<%= link_to '<<Назад в меню предметов',{:action => 'list'}%>
+
+<div class='subject new'>
+	<h2>Create subject</h2>	
+		
+	
+	<% form_for(:subject,:url => {:action => 'create',:id => @subject.id}) do |b|%>
+	
+		<table summary='Book from fields'>
+			<tr>
+				<th><%= b.label(:name,'Name')%></th>
+				<td><%= b.text_field(:name)%></td>
+			</tr>		
+				
+			
+	 	</table>
+	 	<div id='create_button' class='form-buttons'>
+					<%= submit_tag('Create Subject')%>
+				</div>	
+	
+	<%end%>
+</div>

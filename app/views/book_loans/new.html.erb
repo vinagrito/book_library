@@ -1,0 +1,15 @@
+<%@page_title = "Новая выдача"%>
+
+<% form_for(:book_loan,:url => {:action => 'show'}) do |u|%>
+
+	<table>		
+		<tr>
+			<th>Код получателя</th>				
+			<td><%=text_field :user,:card_code%> </td>
+		</tr>			
+	</table>
+	<div id="save_button">
+		<td><%= submit_tag 'далее'%></td>
+	</div>	
+
+<%end%>
